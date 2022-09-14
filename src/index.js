@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+import counterReducer from './reducers/counter';
+import loggedReducer from './reducers/isLogged';
+import allReducers from './reducers';
+import { Provider } from 'react-redux';
+
+const store = createStore(allReducers)
+
+//STORE WHERE ALL DATA/STATE IS, DATA THAT HOLDS ALL THE INFORMATION => GLOBALIZED STATE
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>
 );
 
